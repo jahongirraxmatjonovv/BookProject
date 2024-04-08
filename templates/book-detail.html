@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block content %}
+<div class="card-body">
+    <h4>Detail Book</h4>
+
+    <h2>Book Title: {{ book.title }}</h2>
+    <h2>Book Author: {{ book.author }}</h2>
+    <h2>Book Price: {{ book.price }}</h2>
+    <h2>Book Publisher: {{ book.publisher }}</h2>
+    <h2>Book Image: <img src="{{book.image.url}}" alt="" height="60" width="60"></h2><br>
+
+
+    <a type="button" class="btn btn-danger" href="{% url 'book-list' %}">Back to Book List</a>
+
+</div>
+{% endblock %}

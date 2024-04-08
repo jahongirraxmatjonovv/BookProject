@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block content %}
+<div class="card-body">
+    <h4>Book List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">title</th>
+                <th scope="col">author</th>
+                <th scope="col">price</th>
+                <th scope="col">publisher</th>
+                <th scope="col">image</th>
+                <th scope="col">action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.price }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>
+                    {% if book.image %}
+                    <img src="{{book.image.url}}" alt="" width="50" height="50"> {% endif %}
+                </td>
+                <td>
+                    <a type="button" class="btn btn-primary" href="/book-detail/{{ book.id }}">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Detail
+                    </a>
+                    <a type="button" class="btn btn-warning" href="/book-update/{{ book.id }}">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update
+                    </a>
+                    <a type="button" class="btn btn-danger" href="/book-delete/{{ book.id }}">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{% url 'book-create' %}">
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i> Create
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+    h1 {
+        padding: 10px 10px 10px 10px;
+    }
+</style>
+<h1>Kitobni O'chirish</h1>
+<p>Rostan ham kitobni o'chirmoqchimisiz "{{ book.title }}" ?</p>
+<form method="post">
+    {% csrf_token %}
+    <!-- <button id="but1" type=" submit " class="btn btn-outline-primary btn-sm ">Ha</button> -->
+    <a type=" button " class="btn btn-danger  " href="{%url 'book-list' %} ">Yo'q</a>
+    <button type="submit " class="btn btn-success ">Ha</button>
+
+</form>
+{% endblock %}
